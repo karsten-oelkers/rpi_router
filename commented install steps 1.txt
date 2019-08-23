@@ -1,0 +1,172 @@
+
+Part 1
+
+Image sd card with 
+2016-05-27-raspbian-jessie-lite
+
+Default raspbian root:
+root-un=pi
+root-pw=raspberrypi
+
+Install Updates:
+sudo apt-get update
+sudo apt-get upgrade
+
+Change Hostname from raspberrypi to karsten-rpi:
+sudo nano /etc/hosts
+sudo nano /etc/hostname
+sudo /etc/init.d/hostname.sh
+sudo shutdown -r now
+
+Add User ionadmin:
+sudo adduser ionadmin (configure pw ionadmin)
+sudo adduser ionadmin sudo
+
+Comment: I'm leaving user pi enabled (alternate login to ionadmin@ionadmin with pw ionadmin would be pi@ionadmin with pw raspberrypi)
+possible to delete or disable user pi
+
+Create back up image using Rufus
+
+Part 2
+
+sudo apt-get install isc-dhcp-server
+Comment: this creates an error, but no worries, we just keep going:
+
+Network cards config and restart
+
+sudo nano /etc/network/interfaces
+________________________
+auto lo
+iface lo inet loopback
+ 
+auto eth0
+iface eth0 inet static
+        address 192.168.2.1
+        netmask 255.255.255.0
+
+iface wlan0 inet static
+		address 192.168.3.1
+        netmask 255.255.255.0
+		
+auto wwan0
+iface wwan0 inet dhcp
+________________________
+
+
+ionadmin@ionadmin:~ $ sudo /etc/init.d/networking restart
+[ ok ] Restarting networking (via systemctl): networking.service.
+packet_write_wait: Connection to 169.254.201.205: Connection reset by peer
+
+
+DHCP server config and restart
+Edit #/etc/dhcp/dhcpd.conf
+
+uncomment 
+authorative
+
+________________________
+ddns-update-style none;
+default-lease-time 600;
+max-lease-time 7200;
+log-facility local7;
+ 
+#etho device address 192.168.2.1
+ subnet 192.168.2.0 netmask 255.255.255.0 {
+  range 192.168.2.10 192.168.2.20;
+  option broadcast-address 192.168.2.255;
+  option routers 192.168.2.1;
+  default-lease-time 600;
+  max-lease-time 7200;
+  option domain-name "example.com";
+  option domain-name-servers 8.8.8.8;
+  interface eth0;
+}
+ 
+ #wlan0 device address 192.168.3.1
+subnet 192.168.3.0 netmask 255.255.255.0 {
+  range 192.168.3.10 192.168.3.20;
+  option domain-name-servers 8.8.8.8;
+  option routers 192.168.3.1;
+  interface wlan0;
+}
+________________________
+
+
+sudo /etc/init.d/isc-dhcp-server restart
+
+Part 3 - IP forwarding, masceradign and IPtables
+
+sudo echo 1 > sudo /proc/sys/net/ipv4/ip_forward
+
+sudo nano /etc/sysctl.conf
+
+Uncomment line in /etc/sysctl.conf:
+net.ipv4.tcp.ip_forward=1
+
+#!/bin/bash
+#rpi iptables routing setup script
+# from wwan0/usb-4g-modem to eth0
+LAN="eth0"
+WAN="wwan0"
+
+sudo iptables -F
+sudo iptables -t nat -F
+sudo iptables -t nat -A POSTROUTING -o $WAN -j MASQUERADE
+sudo iptables -A FORWARD -i $WAN -o $LAN -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i $LAN -o $WAN -j ACCEPT
+
+
+list iptables config:
+route
+sudo iptables -L 
+sudo iptables -t nat -L
+
+
+Part 4 Making it work permanently from boot up
+
+Reload iptables at boot up:
+chmod +x ipt.sh
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+sudo ~/remote_support/remote_support start
+
+add to rc.local
+sudo ~/sierra/./connect
+
+LED demon
+System check scripts/regular intervals (Modem function/internet connection indicated via 2 modem LEDs
+Check if IonTorrent and thermo fisher cloud servers	are up	--> Display LED	--> Remote host OK
+check if eth0 running/connected		--> Display LED	--> Connection to Torrent/QS3/5 OK
+
+
+shutdown demon
+At shutdown:
+disconnect modem/shutdown modem
+close connections
+sudo shutdown now or sudo halt		--> Display LED to indicate ok to pull cable
+
+
+Part 5
+
+Testing
+
+Part 6
+
+Field testing
+
+
+Prototype 2
+Tethering and Hotspot
+sudo apt-get install gvfs ipheth-utils
+sudo apt-get install libimobiledevice-utils gvfs-backends gvfs-bin gvfs-fuse
+
+sudo nano /etc/network/interfaces
+allow-hotplug eth1
+iface eth1 inet dhcp
+
+sudo aptitude install ifuse
+
+sudo mkdir /media/iPhone
+
+sudo ifuse /media/iPhone
+
