@@ -1,0 +1,195 @@
+sudo nano /etc/hosts
+sudo nano /etc/hostname
+sudo /etc/init.d/hostname.sh
+sudo shutdown -r now
+users
+lsusb
+ifconfig
+ping www.google.com
+ls /media/
+sudo shutdown now
+sudo iwlist wlan0 scan
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo ifdown wlan0
+sudo ifup wlan0
+ifconfig
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo ifdown wlan0
+sudo ifup wlan0
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get install isc-dhcp-server
+ifconfig
+sudo apt-get install gvfs ipheth-utils
+sudo apt-get install ifuse
+sudo nano /etc/network/interfaces
+sudo /etc/init.d/networking restart
+sudo shutdown -r now
+sudo nano /etc/dhcp/dhcpd.conf
+sudo /etc/init.d/isc-dhcp-server restart
+sudo shutdown -r now
+sudo shutdown now
+sudo nano /etc/network/interfaces
+sudo iwlist wlan0 scan
+sudo iwlist wlan0 scan~more
+sudo iwlist wlan0 scan >list.txt
+nano list.txt 
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo ifdown wlan0
+sudo ifup wlan0
+ifconfig wlan0
+sudo apt-get update
+ping www.google.com
+sudo shutdown -r now
+ping www.google.com
+ifconfig wlan0
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo ifdown wlan0
+sudo ifup wlan0
+ifconfig wlan0
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo ifdown wlan0
+sudo ifup wlan0
+ifconfig wlan0
+sudo nano /etc/network/interfaces
+sudo aptiude
+sudo apt
+sudo apt list ipheth-utils
+sudo apt show ipheth-utils
+sudo nano /etc/network/interfaces
+sudo ifdown wlan0
+sudo shutdown -r now
+ls
+ping www.google.com
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo nano /etc/network/interfaces
+sudo shutdown -r now
+ping www.google.com
+sudo power off
+sudo poweroff
+nano /etc/interfaces
+nano /etc/network/interfaces
+sudo cp interface_new /etc/network/interfaces
+nano /etc/network/interfaces
+sudo restart
+sudo reboot
+sudo apt-get update
+sudo iwlist wlan0 scan
+nano /etc/network/interfaces
+sudo cp interfaces_new2 /etc/network/interfaces
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo /etc/init.d/networking restart
+systemctl demon-reload
+sudo systemctl demon-reload
+sudo systemctl
+isc-dhcp-server start
+sudo isc-dhcp-server start
+isc-dhcp-server
+isc-dhcp-server.service restart
+ping www.google.com
+ping www.google.com -c
+ping www.google.com -I wlan0
+sudo apt-get update
+sudo iwlist wlan0 scan
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo /etc/init.d/networking restart
+ifup wlan0
+ping www.google.com -I wlan0
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo /etc/network/interfaces.
+sudo /etc/network/interfaces
+sudo nano /etc/network/interfaces
+sudo reboot
+ping www.google.com
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get update
+sudo reboot
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install gvfs ipheth-utils
+sudo apt-get install libimobiledevice-utils gvfs-backends gvfs-bins gvfs-fuse
+sudo apt-get install libimobiledevice-utils gvfs-backends gvfs-bin gvfs-fuse
+iconfig -s
+ifconfig -s
+sudo nano /etc/network/interfaces
+sudo apt-get install ifuse
+ls /media/
+mkdir /media/iPhone
+sudo mkdir /media/iPhone
+sudo ifuse /media/iPhone/
+sudo nano /etc/network/interfaces
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo reboot
+ping www.google.com
+sudo nano /etc/network/interfaces
+sudo nano /lib/udev/iphoneconnect
+sudo chmod 755 /lib/udev/iphoneconnect
+sudo nano /lib/udev/rules.d/90-iphone-tether.rules
+sudo reboot
+ping www.google.com
+ifconfig
+sudo isc-dhcp-server restart
+sudo /etc/init.d/isc-dhcp-server restart
+sudo reboot
+route
+sudo iptables -L
+sudo bash iptables.sh
+route
+sudo iptables -L
+sudo iptables -t nat -L
+test search
+sudo cp iptables.sh ipt.sh
+sudo chmod +x ipt.sh 
+rm iptables.sh 
+ls -lah
+sudo nano /etc/network/if-up.d/iptables
+sudo chmod +x /etc/network/if-up.d/iptables
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+sudo reboot
+sudo nano /etc/systemd/networking.service.d/reduce-timeout.conf
+sudo nano /lib/systemd/system/networking.service.d/network-pre.conf 
+sudo reboot
+ping www.google.com
+ls
+rm sudo
+rm reduce-timeout.conf 
+route
+peter miller
+sudo nano ipt.sh
+sudo ./ipt.sh 
+sudo networking restart
+sudo ipt-dhcp-server restart
+more .bash_history 
+ipt-dhcp-server.service restart
+sudo ipt-dhcp-server.service restart
+sudo ict-dhcp-server.service restart
+isc-dhcp-server.service restart
+isc-dhcp-server start
+sudo /etc/init.d/networking restart
+isc.dhcp.server.service start
+ping www.google.com
+sudo nano /etc/network/interfaces
+ifconfig
+route
+sudo iptables -L
+sudo iptables -t nat -L
+sudo tcpdump -i any -nn port 80
+sudo apt-get tcpdump
+sudo apt-get install tcpdump
+sudo tcpdump -i any -nn port 80
+ping www.ggogle.com
+ping www.google.com
++iptables -F
+iptables -F
+sudo iptables -F
+sudo iptables -t nat -F
+sudo bash ipt.sh 
+ls -lah
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+ls
+sudo nano /etc/network/if-up.d/iptables 
+ls -lah /etc/network/if-up.d/iptables 
+ls -lah /etc/network/if-up.d/
+sudo shutdown -r
