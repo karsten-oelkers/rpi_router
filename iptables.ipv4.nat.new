@@ -1,0 +1,14 @@
+*filter
+:INPUT DROP [0:0]
+-A INPUT -i lo -j ACCEPT
+-A INPUT -i wwan0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+:FORWARD DROP [0:0]
+-A FORWARD -i eth0 -o wwan0 -j ACCEPT
+-A FORWARD -i eth1 -o wwan0 -j ACCEPT
+-A FORWARD -i wwan0 -o eth0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -i wwan0 -o eth1 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+:OUTPUT ACCEPT[0:0]
+
+*nat
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING -o wwan0 -j MASQUERADE
